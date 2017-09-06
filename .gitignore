@@ -1,0 +1,16 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# Filetypes
+*.class
+*.7z
+
+# Text Editor / IDE
+.idea
+.vscode
+
+# Project ignores
+src/sources\.txt
+files/
+build/
