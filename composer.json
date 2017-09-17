@@ -1,0 +1,18 @@
+{
+	"name": "luizf/s4-p2-ec4",
+	"description": "Exerc\u0000cio Complementar 4",
+	"type": "project",
+	"license": "MIT",
+	"authors": [{
+		"name": "Luiz Filipe Machado Barni",
+		"email": "machado@odahcam.com"
+	}],
+	"require": {
+		"php": "^7.3"
+	},
+	"autoload": {
+		"psr-4": {
+			"": "src/"
+		}
+	}
+}
