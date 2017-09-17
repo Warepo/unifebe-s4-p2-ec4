@@ -1,10 +1,8 @@
 <?php
-/**
- *
- */
-namespace Conexao\Banco;
 
-class conexao
+namespace classes;
+
+class Conexao
 {
   function __construct()
   {

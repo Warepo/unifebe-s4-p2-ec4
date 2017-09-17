@@ -1,7 +1,8 @@
 <?php
-use 'Conexao\Banco\conectar';
+require (dirname(__FILE__).DIRECTORY_SEPARATOR.'autoload.php');
 
-require 'conexao.php';
+use classes\Conexao;
 
+$conectar = new Conexao();
 
-$banco  = new conexao();
+$conectar->conectar();
