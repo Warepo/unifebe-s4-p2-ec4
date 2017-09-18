@@ -77,14 +77,33 @@ class Banco
    *
    */
   public function criar_tabela($_tabela = null){
-    // se a $_tabela for null, cria como default tabela alunos e insere dados
-    // se não ele cria a tabela com o parametro passado
+    // se a $_tabela for null e se ela não existir na base de dados, cria como default
+    //  tabela alunos e insere dados se não ele cria a tabela com o parametro que foi passado
     if($_tabela == false){
       if($this->sql->query('CREATE TABLE IF NOT EXISTS Alunos (nome varchar(50),curso varchar(50),fase int,cpf varchar(50) PRIMARY KEY)')){
             $this->sql->query('INSERT INTO alunos VALUES ("Maria","Informatica",null,"123.456.789-10")');
       }
     }else{
       $this->sql->query('CRETE TABLE IF NOT EXISTS '.$_tabela);
+    }
+  }
+
+  /**
+   * [inserir monta um insert para a tabela x]
+   * @param  [String] $_tabela  [tabela que sera inserido]
+   * @param  [Array] $_valores [Array Associativa com chaves e valores]
+   */
+  public function inserir($_tabela,$_valores){
+    $chave = "";
+    $valor = "";
+    foreach ($_valores as $key => $value) {
+      $chave .= $key.",";
+      $valor  .= "'".$value."'".",";
+    }
+    $chave = rtrim($chave,",");
+    $valor = rtrim($valor,",");
+    if(!$this->sql->query("INSERT INTO $_tabela ($chave) VALUES ($valor)")){
+      die($this->sql->error);
     }
   }
 

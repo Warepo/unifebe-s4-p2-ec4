@@ -6,3 +6,4 @@ use classes\Banco;
 $ambiente = new Banco('localhost','root','');
 $ambiente->create_banco();
 $ambiente->conectar();
+$ambiente->criar_tabela();
