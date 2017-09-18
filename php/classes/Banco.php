@@ -94,17 +94,20 @@ class Banco
    * @param  [Array] $_valores [Array Associativa com chaves e valores]
    */
   public function inserir($_tabela,$_valores){
-    $chave = "";
-    $valor = "";
+    $chave = ""; //limpando variavel
+    $valor = "";//limpando variavel
+    //para cada chave valor vinda em uma array associativa $_valores
+    //monta um insert
     foreach ($_valores as $key => $value) {
-      $chave .= $key.",";
-      $valor  .= "'".$value."'".",";
+      $chave .= $key.","; //montando a variavel $key {chave} colocando em uma string com ','
+      $valor  .= "'".$value."'".",";//montando a variavel $value {valor} colocando em uma string com ',', colocando aspas simples nos valores
     }
-    $chave = rtrim($chave,",");
-    $valor = rtrim($valor,",");
+    $chave = rtrim($chave,","); //retirando a ultima virgula
+    $valor = rtrim($valor,",");// retirando a ultima virgula
     if(!$this->sql->query("INSERT INTO $_tabela ($chave) VALUES ($valor)")){
       die($this->sql->error);
     }
+    //fazendo o insert se der errado o script morre mosntrando o erro;
   }
 
 
