@@ -1,7 +1,9 @@
 <?php
-use 'Conexao\Banco\conectar';
+require (__DIR__.DIRECTORY_SEPARATOR.'autoload.php');
 
-require 'conexao.php';
+use classes\Banco;
 
-
-$banco  = new conexao();
+$ambiente = new Banco('localhost','root','');
+$ambiente->create_banco();
+$ambiente->conectar();
+$ambiente->criar_tabela();
