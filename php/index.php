@@ -1,8 +1,7 @@
 <?php
-require (dirname(__FILE__).DIRECTORY_SEPARATOR.'autoload.php');
+require (__DIR__.DIRECTORY_SEPARATOR.'autoload.php');
 
-use classes\Conexao;
+use classes\Banco;
 
-$conectar = new Conexao();
-
-$conectar->conectar();
+$ambiente = new Banco('teste');
+$ambiente->create_banco();
