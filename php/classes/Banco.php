@@ -37,8 +37,10 @@ class Banco
     Para cada base de dados comparamos com a base 'default' da aplicação
     Se for igual ele retorna true setando $bool_base
     */
-    while ($result = $data->fetch_row()) {
-        $result[0] == 'teste' ? $bool_base = true : $bool_base = false;
+    while ($result = $data->fetch_row())
+     {
+        // $result[0] == 'teste' ? $bool_base = true : $bool_base = false;
+        $bool_base = $result[0] == 'teste';
     }
     /*
     Se $bool_base estiver true ele apaga a base de dados atual e cria uma
@@ -62,7 +64,8 @@ class Banco
    * @param  [String] $_base   [a base de dados]
    * @return           [cria a conexão de dados ou usa o deafult]
    */
-  public function conectar($_server = null, $_log = null, $_pass = null,$_base = null){
+  public function conectar($_server = null, $_log = null, $_pass = null,$_base = null)
+  {
     //se $_server é null, cria uma conexão default, se não ele cria com os parametros
     if($_server == false){
       $this->sql = mysqli_connect($this->connect_server,$this->login,$this->senha,'teste');
@@ -76,7 +79,8 @@ class Banco
    * @param  [String] $_tabela [nome da tabela que deseja criar]
    *
    */
-  public function criar_tabela($_tabela = null){
+  public function criar_tabela($_tabela = null)
+  {
     // se a $_tabela for null e se ela não existir na base de dados, cria como default
     //  tabela alunos e insere dados se não ele cria a tabela com o parametro que foi passado
     if($_tabela == false){
@@ -89,11 +93,12 @@ class Banco
   }
 
   /**
-   * [inserir monta um insert para a tabela x]
+   * [inserir monta um insert para a tabela $_tabela]
    * @param  [String] $_tabela  [tabela que sera inserido]
    * @param  [Array] $_valores [Array Associativa com chaves e valores]
    */
-  public function inserir($_tabela,$_valores){
+  public function inserir($_tabela,$_valores)
+  {
     $chave = ""; //limpando variavel
     $valor = "";//limpando variavel
     //para cada chave valor vinda em uma array associativa $_valores
@@ -108,6 +113,17 @@ class Banco
       die($this->sql->error);
     }
     //fazendo o insert se der errado o script morre mosntrando o erro;
+  }
+
+  /**
+   * [varre_tabela varre a tabela trazendo as colunas]
+   * @param  [String] $_tabela [nome da tabela]
+   * @return [object]          [as colunas das tabelas]
+   */
+  public function varre_tabela($_tabela)
+  {
+    $colunas = $this->sql->query('DESCRIBE '.$_tabela);
+    return $colunas;
   }
 
 

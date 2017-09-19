@@ -1,9 +1,22 @@
-<?php
-require (__DIR__.DIRECTORY_SEPARATOR.'autoload.php');
-
-use classes\Banco;
-
-$ambiente = new Banco('localhost','root','');
-$ambiente->create_banco();
-$ambiente->conectar();
-$ambiente->criar_tabela();
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trabalho PO2</title>
+  </head>
+  <body>
+    <style media="screen">
+      h2 {
+        margin-left: 30px;
+      }
+      nav {
+        display: inline;
+      }
+    </style>
+      <small>Html simples para um back-end monstro</small>
+      <h2>Trabalho de POO2</h2>
+        <nav>
+          <a href="padrao.php">Para o exercicio simples</a>
+        </nav>
+  </body>
+</html>
