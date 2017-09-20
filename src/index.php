@@ -15,15 +15,15 @@ $input = $climate->confirm("Quer executar o script Principal?");
 if (!$input->confirmed()) {
     $options = [
         'connect_database' => 'Conexão ao Banco de Dados.',
-        // $climate->out("\t2. Criação de uma nova DATABASE.");
+        // 2. Criação de uma nova DATABASE.
         'create_database' => 'Criar uma base de dados.',
-        // $climate->out("\t3. Conexão à uma DATABASE.");
+        // 3. Conexão à uma DATABASE.
         'use_database' => 'Escolher uma base de dados.',
-        // $climate->out("\t4. Criação de Tabelas em uma DATABASE.");
+        // 4. Criação de Tabelas em uma DATABASE.
         'create_table' => 'Criar tabela na base de dados.',
-        // $climate->out("\t5. Inserção de informações numa tabela.");
+        // 5. Inserção de informações numa tabela.
         'insert_into' => 'Inserir info. em uma tabela.',
-        // $climate->out("\t6. Busca de Informações numa tabela'.");
+        // 6. Busca de Informações numa tabela'.
         'fetch' => 'Buscar dados de uma tabela.',
 
         // aluno
@@ -34,11 +34,17 @@ if (!$input->confirmed()) {
     $input = new \Menu($options);
     // $input = $climate->checkbox('O que vamos fazer hoje?', $options);
 
-    $response = $input->prompt();
+    $actions = new \MenuActions;
 
-    $climate->shout($response);
+    while (true) {
+        $response = $input->prompt();
 
-    \MenuActions::{$response}();
+        $climate->backgroundBlack()->white()->out("\n===========================\n");
+
+        $actions->$response();
+
+        $climate->backgroundBBlue()->white()->out("\n===========================\n");
+    }
 
 } else {
     $config = json_decode(file_get_contents('config.txt'), true);
