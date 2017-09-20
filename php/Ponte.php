@@ -10,10 +10,10 @@ class Ponte
 
   function __construct()
   {
-    # code...
+
   }
 
-  public function inserir()
+  public function inserir($_tabela,$_array)
   {
     
   }

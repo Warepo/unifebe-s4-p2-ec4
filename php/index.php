@@ -16,7 +16,7 @@
       <small>Html simples para um back-end monstro</small>
       <h2>Trabalho de POO2</h2>
         <nav>
-          <a href="padrao.php">Para o exercicio simples</a>
+          <a href="classes\Ambiente.php?funcao=index">Para o exercicio simples</a>
         </nav>
   </body>
 </html>
