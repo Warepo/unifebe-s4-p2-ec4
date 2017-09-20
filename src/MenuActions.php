@@ -46,9 +46,10 @@ class MenuActions
         $servername = $this->get_cli()->input('Insira a URL de conexão com o servidor: ')->prompt();
         $username = $this->get_cli()->input('Nome de usuário para '.$servername.': ')->prompt();
         $password = $this->get_cli()->input('Palavra-passe para '.$username.': ')->prompt();
+        // $default_schemma = $this->get_cli()->input('Escolha o banco de dados inicial em \''.$servername.'\': ')->prompt();
 
         return $this->config = [
-            // 'default_schema' => $this->get_cli()->input('')->prompt(),
+            // 'default_schema' => $default_schemma,
             'servername' => $servername,
             'username' => $username,
             'password' => $password,
@@ -67,6 +68,10 @@ class MenuActions
 
             // set the PDO error mode to exception
             $this->get_conn()->setAttribute(\PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // solicita que o usuário escolha um banco de dados
+            $this->use_database();
+
         } catch (\PDOException $e) {
             $this->get_cli()->error($e->getMessage());
             exit;
@@ -136,7 +141,7 @@ class MenuActions
         $climate = $this->get_cli();
         $conn = $this->get_conn();
 
-        $database = $climate->input("\nNome do BD a ser usada: ")->prompt();
+        $database = $climate->input("\nNome do database a ser utilizada: ")->prompt();
 
         $rs = $conn->query('SHOW DATABASES LIKE \''.$database.'\''); // Seleciona todas as bases de dados do servidor
 
