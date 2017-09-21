@@ -1,5 +1,6 @@
 <h2>Insira os dados na tabela alunos</h2><br>
-<form action="Ponte.php" method="post">
+
+<form>
 
 <?php
 foreach($formulario as $coluna)
