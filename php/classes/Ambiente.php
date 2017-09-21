@@ -18,7 +18,7 @@
 
     /**
      * [index index site]
-     * @return [view] [retorna a vie com a variavel do formulario]
+     * @return [view] [retorna a view com a variavel do formulario]
      */
     public function index()
     {
